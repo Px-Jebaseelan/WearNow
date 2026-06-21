@@ -4,11 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { MapPin, Search, Filter, Bell, Home, Grid, Heart, User, Star, Flame, Sparkles } from "lucide-react";
 import styles from "./page.module.css";
+import AIModal from "@/components/AIModal";
 
 export default function HomePage() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchFocused, setSearchFocused] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
+  const [showAIModal, setShowAIModal] = useState(false);
 
   const showToast = (msg: string) => {
     setToastMessage(msg);
@@ -81,7 +83,19 @@ export default function HomePage() {
       <div className={styles.heroBanner}>
         <div className={styles.heroTitle}>Match Your Vibe</div>
         <div className={styles.heroSub}>AI-powered outfit suggestions tailored just for you</div>
+        <button 
+          onClick={() => setShowAIModal(true)}
+          style={{
+            marginTop: '20px', padding: '12px 24px', background: 'white', color: 'var(--primary)',
+            borderRadius: '24px', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '8px',
+            boxShadow: '0 8px 16px rgba(0,0,0,0.1)', position: 'relative', zIndex: 2
+          }}
+        >
+          <Sparkles size={18} /> Try AI Stylist ✨
+        </button>
       </div>
+
+      {showAIModal && <AIModal onClose={() => setShowAIModal(false)} />}
 
       {/* Categories */}
       <div className={styles.sectionContainer}>
