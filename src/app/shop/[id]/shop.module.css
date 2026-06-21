@@ -1,0 +1,256 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 100px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.title {
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.storeBanner {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s ease;
+}
+
+.bannerImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bannerOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: 24px;
+}
+
+.bannerInfo {
+  color: white;
+}
+
+.bannerName {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.bannerMeta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.bannerRating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #ff9800;
+  background: rgba(0,0,0,0.4);
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  backdrop-filter: blur(4px);
+}
+
+.filterSection {
+  padding: 24px;
+}
+
+.catList {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.catList::-webkit-scrollbar {
+  display: none;
+}
+
+.catPill {
+  padding: 10px 24px;
+  border-radius: var(--radius-lg);
+  background: var(--bg-surface);
+  color: var(--text-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid transparent;
+}
+
+.catPill:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  color: var(--primary);
+}
+
+.catPill.active {
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 8px 16px rgba(255, 94, 0, 0.25);
+}
+
+.productSection {
+  padding: 0 24px;
+}
+
+.sectionTitle {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.productList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.productCard {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+}
+
+.productImg {
+  width: 100px;
+  height: 100px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  background: var(--bg-app);
+}
+
+.productInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.productName {
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+}
+
+.productPrice {
+  font-weight: 800;
+  color: var(--text-dark);
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+}
+
+.addBtn {
+  background: var(--bg-app);
+  color: var(--primary);
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 0.9rem;
+  align-self: flex-start;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid var(--border-color);
+}
+
+.addBtn:hover {
+  background: var(--primary);
+  color: white;
+  transform: translateY(-2px);
+  border-color: var(--primary);
+  box-shadow: 0 4px 12px rgba(255, 94, 0, 0.2);
+}
+
+.addBtn.added {
+  background: var(--success);
+  color: white;
+  border-color: var(--success);
+}
+
+.cartBanner {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 48px);
+  max-width: 432px; /* 480 - 48 */
+  z-index: 50;
+  border-radius: var(--radius-lg);
+  padding: 8px;
+}
+
+.cartBtn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+  padding: 16px 24px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  width: 100%;
+  box-shadow: 0 12px 24px rgba(255, 94, 0, 0.3);
+  transition: transform 0.2s;
+}
+
+.cartBtn:hover {
+  transform: scale(1.02);
+}
+
+@media (min-width: 768px) {
+  .storeBanner {
+    border-radius: var(--radius-lg);
+    margin: 24px;
+  }
+  
+  .catList {
+    overflow-x: visible;
+    flex-wrap: wrap;
+  }
+  
+  .productList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+  }
+  
+  .productCard {
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    border-radius: var(--radius-md);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  
+  .productCard:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-4px);
+  }
+  
+  .cartBanner {
+    max-width: 600px;
+  }
+}
